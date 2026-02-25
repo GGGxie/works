@@ -1,0 +1,80 @@
+{
+  "profile": {
+    "name": "GGGxie",
+    "title": "全栈工程师",
+    "title_en": "Full-Stack Engineer",
+    "bio": "热爱技术，专注于构建高质量的软件服务。擅长后端架构设计、AI 应用开发和云原生技术。",
+    "bio_en": "Passionate about technology, focused on building high-quality software. Specialized in backend architecture, AI application development, and cloud-native technologies.",
+    "avatar": "/images/avatar.png",
+    "social": {
+      "github": "https://github.com/GGGxie",
+      "email": "790102426@qq.com",
+      "wechat": "Gavin-Cap"
+    }
+  },
+  "projects": [
+    {
+      "id": "crazya",
+      "name": "CrazyA - AI + 玄学股票预测系统",
+      "name_en": "CrazyA - AI + Mystical Stock Prediction",
+      "description": "科技与玄学的完美结合：用 AI Agent 和奇门遁甲为投资决策提供独特视角",
+      "description_en": "Where tech meets mysticism: AI Agent + ancient Qimen Dunjia divination for unique investment insights",
+      "longDescription": "CrazyA 独创性地将现代 AI 技术（LangGraph ReACT Agent）、实时股票数据（财联社、东方财富、新浪财经）和传统玄学算法（奇门遁甲五行分析）三者深度融合。支持日度市场预测、个股决策分析和风险预警，为投资者提供多维度的参考建议。",
+      "tags": ["Python", "React", "LangGraph", "Go", "FastAPI", "MCP"],
+      "links": {
+        "github": "https://github.com/GGGxie/CrazyA",
+        "demo": "https://crazya.gggxie.com"
+      },
+      "featured": true,
+      "date": "2025-10",
+      "status": "active"
+    },
+    {
+      "id": "qiongtrip",
+      "name": "QiongTrip - 海南智能旅游AI助手",
+      "name_en": "QiongTrip - Hainan AI Travel Assistant",
+      "description": "基于 AI 的海南旅游服务平台，提供智能行程规划、政策查询、实时咨询和网红地点避坑分析",
+      "description_en": "AI-powered Hainan travel platform with smart itinerary planning, policy lookup, and viral spot reviews",
+      "longDescription": "QiongTrip 是为三亚/海口游客打造的智能旅游助手。集成 LangGraph AI Agent 实现多轮对话和智能行程规划，支持免税政策查询、景点预约信息、网红景点真实评价分析等功能。采用 Go + Python 微服务架构，前端使用 React + TailwindCSS 构建现代化界面。",
+      "tags": ["React", "Go", "Python", "LangGraph", "FastAPI", "TailwindCSS"],
+      "links": {
+        "github": "https://github.com/GGGxie/QiongTrip"
+      },
+      "featured": false,
+      "date": "2025-12",
+      "status": "active"
+    },
+    {
+      "id": "mcpark",
+      "name": "MCPark - MCP 服务收集管理平台",
+      "name_en": "MCPark - MCP Service Management Platform",
+      "description": "收集、管理和分享 MCP 服务配置，一键生成 Cursor IDE deep link 方便安装",
+      "description_en": "Collect, manage and share MCP service configs, generate Cursor IDE deep links for one-click install",
+      "longDescription": "MCPark 是一个 B/S 架构的 Web 应用，用于收集、管理和分享 Model Context Protocol (MCP) 服务配置。用户可以添加自己开发的或收集到的 MCP 服务，系统会自动生成 Cursor IDE 的 deep link，方便其他用户一键安装。支持 SQLite 和 MySQL 双数据库。",
+      "tags": ["Go", "React", "TypeScript", "Vite", "TailwindCSS", "SQLite"],
+      "links": {
+        "github": "https://github.com/GGGxie/MCPark",
+        "demo": "https://mcpark.gggxie.com"
+      },
+      "featured": false,
+      "date": "2025-08",
+      "status": "active"
+    },
+    {
+      "id": "skillshub",
+      "name": "SkillsHub - AI Skills 社区平台",
+      "name_en": "SkillsHub - AI Skills Community Platform",
+      "description": "社区驱动的 AI Skills 仓库，发现、创建、学习和分享 Cursor Skills",
+      "description_en": "Community-driven AI skills repository for discovering, creating, learning and sharing Cursor Skills",
+      "longDescription": "SkillsHub 是一个社区驱动的 AI Skills 仓库平台，支持发现、创建、学习和分享 Cursor Agent Skills。采用 Go + React 全栈架构，支持中英双语、Google OAuth 登录、Markdown 渲染、评论点赞系统和技能搜索排序等功能。",
+      "tags": ["Go", "React", "TypeScript", "Vite", "TailwindCSS", "SQLite", "OAuth"],
+      "links": {
+        "github": "https://github.com/GGGxie/SkillsHub",
+        "demo": "https://skills.gggxie.com"
+      },
+      "featured": false,
+      "date": "2026-02",
+      "status": "active"
+    }
+  ]
+}

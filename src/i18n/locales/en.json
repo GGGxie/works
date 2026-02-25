@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "work": "Home",
+    "about": "About"
+  },
+  "home": {
+    "searchPlaceholder": "Search projects...",
+    "allFilter": "All",
+    "noResults": "No projects found"
+  },
+  "about": {
+    "skills": "Tech Stack",
+    "backend": "Backend & AI",
+    "frontend": "Frontend",
+    "database": "Database",
+    "devops": "DevOps",
+    "wechat": "WeChat"
+  },
+  "projectCard": {
+    "viewDemo": "Demo",
+    "viewCode": "Code"
+  },
+  "footer": {
+    "copyright": "All rights reserved"
+  },
+  "lang": {
+    "toggle": "中"
+  }
+}

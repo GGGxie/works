@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "work": "首页",
+    "about": "关于"
+  },
+  "home": {
+    "searchPlaceholder": "搜索项目...",
+    "allFilter": "全部",
+    "noResults": "没有找到匹配的项目"
+  },
+  "about": {
+    "skills": "技术栈",
+    "backend": "后端 & AI",
+    "frontend": "前端",
+    "database": "数据库",
+    "devops": "DevOps",
+    "wechat": "微信"
+  },
+  "projectCard": {
+    "viewDemo": "Demo",
+    "viewCode": "代码"
+  },
+  "footer": {
+    "copyright": "保留所有权利"
+  },
+  "lang": {
+    "toggle": "EN"
+  }
+}

@@ -86,6 +86,10 @@ export function Home({ config }: HomeProps) {
       </section>
 
       <section className="work container">
+        <div className="work-header">
+          <h2 className="work-title">{t('home.projects')}</h2>
+          <span className="work-count">{sortedProjects.length}</span>
+        </div>
         <div className="work-toolbar">
           <div className="search-box">
             <Search size={16} />

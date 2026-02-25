@@ -4,6 +4,7 @@
     "about": "About"
   },
   "home": {
+    "projects": "Projects",
     "searchPlaceholder": "Search projects...",
     "allFilter": "All",
     "noResults": "No projects found"

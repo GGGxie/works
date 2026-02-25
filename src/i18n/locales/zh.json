@@ -4,6 +4,7 @@
     "about": "关于"
   },
   "home": {
+    "projects": "个人项目",
     "searchPlaceholder": "搜索项目...",
     "allFilter": "全部",
     "noResults": "没有找到匹配的项目"

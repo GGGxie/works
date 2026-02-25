@@ -71,10 +71,11 @@
 }
 
 .work-title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 .work-count {
@@ -176,7 +177,8 @@
     gap: 1rem;
   }
 
-  .intro-name {
+  .intro-name,
+  .work-title {
     font-size: 1.75rem;
   }
 

@@ -29,9 +29,15 @@ Works 站点 (works.gggxie.com) 是一个 React + Vite 静态站点，通过 `/c
 | works | works.gggxie.com | 8082 (nginx) |
 | SkillsHub | skills.gggxie.com | 8083 (nginx) |
 | MCPark | mcpark.gggxie.com | 8085 (nginx) |
-| HAP | hap.gggxie.com | 8087 (docker) |
-| HAP 官网 | gggxie.com / www.gggxie.com | 8089 (docker)，DNS 未解析 |
+| HAP 应用 | hap.gggxie.com | 8087 (docker)，需账号登录 |
+| HAP 官网 | gggxie.com / www.gggxie.com | 8089 (docker) |
 | ReditCN | reddit.gggxie.com | 8090 (nginx) |
+
+新增域名时用现有 origin cert 建 DNS 记录，不需要额外 API Token:
+
+```bash
+cloudflared tunnel route dns 649a62a1-1213-4c48-963b-9a66f37c83fa <hostname>
+```
 
 查看最新域名映射: `cat /etc/cloudflared/config.yml`
 

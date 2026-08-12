@@ -1,4 +1,5 @@
-import { Globe, Github, Code2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight, Code2, Github, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { Project } from '../types';
 import './ProjectCard.css';
@@ -13,6 +14,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   const displayName = isEn ? (project.name_en || project.name) : project.name;
   const displayDesc = isEn ? (project.description_en || project.description) : project.description;
+  const detailPath = `/projects/${project.id}`;
 
   const codeSnippet = `// ${project.name.split(' ')[0]}
 const stack = [
@@ -21,11 +23,9 @@ const stack = [
   "${project.tags[2] || 'Ship'}"
 ];`;
 
-  const hasLinks = Boolean(project.links.demo || project.links.github);
-
   return (
     <article className="project-card">
-      <div className="project-image-container">
+      <Link to={detailPath} className="project-image-container" aria-label={displayName}>
         {project.image ? (
           <img src={project.image} alt={displayName} className="project-image" />
         ) : (
@@ -36,39 +36,19 @@ const stack = [
             </div>
           </div>
         )}
-        {hasLinks && (
-          <div className="project-overlay">
-            <div className="project-links">
-              {project.links.demo && (
-                <a
-                  href={project.links.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="icon-link"
-                  title={t('projectCard.viewDemo')}
-                >
-                  <Globe size={20} />
-                </a>
-              )}
-              {project.links.github && (
-                <a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="icon-link"
-                  title={t('projectCard.viewCode')}
-                >
-                  <Github size={20} />
-                </a>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
+        <div className="project-overlay">
+          <span className="project-overlay-cta">
+            {t('projectCard.viewDetail')}
+            <ArrowUpRight size={16} />
+          </span>
+        </div>
+      </Link>
 
       <div className="project-info">
         <div className="project-header">
-          <h3 className="project-title">{displayName}</h3>
+          <h3 className="project-title">
+            <Link to={detailPath}>{displayName}</Link>
+          </h3>
           <div className="project-meta">
             {project.status === 'wip' && (
               <span className="project-status">{t('projectCard.wip')}</span>
@@ -84,6 +64,34 @@ const stack = [
             </span>
           ))}
         </div>
+        {(project.links.demo || project.links.github) && (
+          <div className="project-actions">
+            {project.links.demo && (
+              <a
+                className="project-action"
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Globe size={14} />
+                {t('projectCard.viewDemo')}
+                <ArrowUpRight size={12} />
+              </a>
+            )}
+            {project.links.github && (
+              <a
+                className="project-action"
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github size={14} />
+                {t('projectCard.viewCode')}
+                <ArrowUpRight size={12} />
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </article>
   );

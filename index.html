@@ -1,13 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GGGxie - Works</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/images/avatar.png" />
+    <script>
+      // 在首次绘制前定好主题，避免暗色用户看到白屏闪烁
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var dark = saved
+            ? saved === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) {}
+      })();
+    </script>
+    <!--app-head-->
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
+    <!--app-config-->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

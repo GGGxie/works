@@ -3,6 +3,7 @@ import { Github, Mail, MessageCircle, Briefcase, Code2, Database, Cloud, Layout 
 import { useTranslation } from 'react-i18next';
 import { WechatQRModal } from '../components';
 import type { Profile } from '../types';
+import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import './About.css';
 
 interface AboutProps {
@@ -17,6 +18,8 @@ export function About({ profile }: AboutProps) {
 
   const displayTitle = isEn ? (profile.title_en || profile.title) : profile.title;
   const displayBio = isEn ? (profile.bio_en || profile.bio) : profile.bio;
+
+  useDocumentMeta({ title: t('meta.aboutTitle'), description: displayBio });
 
   return (
     <div className="page about-page">

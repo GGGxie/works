@@ -3,6 +3,7 @@ import { Github, Mail, MessageCircle, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ProjectCard, WechatQRModal } from '../components';
 import type { Config } from '../types';
+import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import './Home.css';
 
 interface HomeProps {
@@ -19,6 +20,8 @@ export function Home({ config }: HomeProps) {
 
   const displayTitle = isEn ? (profile.title_en || profile.title) : profile.title;
   const displayBio = isEn ? (profile.bio_en || profile.bio) : profile.bio;
+
+  useDocumentMeta({ title: t('meta.homeTitle'), description: displayBio });
 
   const allTags = useMemo(() => {
     const counts = new Map<string, number>();

@@ -1,11 +1,16 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components';
-import { Home, About } from './pages';
+import { Home, About, ProjectDetail } from './pages';
 import { useConfig } from './hooks/useConfig';
+import type { Config } from './types';
 import './App.css';
 
-function App() {
-  const { config, loading, error } = useConfig();
+interface AppProps {
+  initialConfig?: Config;
+}
+
+function App({ initialConfig }: AppProps) {
+  const { config, loading, error } = useConfig(initialConfig);
 
   if (loading) {
     return (
@@ -26,18 +31,17 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Header />
-        <main className="main">
-          <Routes>
-            <Route path="/" element={<Home config={config} />} />
-            <Route path="/about" element={<About profile={config.profile} />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <div className="app">
+      <Header />
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<Home config={config} />} />
+          <Route path="/projects/:id" element={<ProjectDetail config={config} />} />
+          <Route path="/about" element={<About profile={config.profile} />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   );
 }
 

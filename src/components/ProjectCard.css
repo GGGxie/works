@@ -5,6 +5,7 @@
 }
 
 .project-image-container {
+  display: block;
   position: relative;
   aspect-ratio: 16 / 10;
   background-color: var(--bg-tertiary);
@@ -95,7 +96,7 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Overlay with links */
+/* Overlay hint for the detail page */
 .project-overlay {
   position: absolute;
   top: 0;
@@ -111,31 +112,22 @@
   z-index: 2;
 }
 
-.project-card:hover .project-overlay {
+.project-card:hover .project-overlay,
+.project-image-container:focus-visible .project-overlay {
   opacity: 1;
 }
 
-.project-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.icon-link {
-  color: white;
+.project-overlay-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(4px);
-  padding: 0.75rem;
-  border-radius: 50%;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-link:hover {
-  background: white;
-  color: black;
-  transform: scale(1.1);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 /* Project info */
@@ -156,6 +148,10 @@
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.01em;
+}
+
+.project-title a:hover {
+  color: var(--text-secondary);
 }
 
 .project-meta {
@@ -211,4 +207,29 @@
   content: '#';
   margin-right: 1px;
   color: var(--border-primary);
+}
+
+/* Always-visible links: hover overlays are unreachable on touch screens */
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.project-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  padding: 0.3125rem 0.625rem;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.project-action:hover {
+  border-color: var(--text-tertiary);
+  color: var(--text-primary);
 }

@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# works
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+个人作品集站点，线上地址 [works.gggxie.com](https://works.gggxie.com)。
 
-Currently, two official plugins are available:
+项目数据全部来自一份 JSON 配置，站点在构建时把每个页面预渲染成静态 HTML，所以分享到微信/Slack 有内容摘要，搜索引擎也能直接读到正文。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 技术栈
 
-## React Compiler
+React 19 + TypeScript + Vite 7，路由用 react-router v7，文案用 i18next 做中英双语，图标用 lucide-react。样式是手写 CSS + CSS 变量，支持浅色/深色主题。没有 UI 框架和 CSS 预处理器。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 目录结构
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+public/config/projects.json   项目与个人信息（唯一数据源）
+public/images/projects/       各项目预览图
+public/og-image.png           分享卡片图（由 scripts/ 生成）
+src/pages/                    首页、项目详情、关于
+src/components/               Header / Footer / ProjectCard 等
+src/entry-server.tsx          预渲染入口（renderToString）
+scripts/prerender.mjs         构建后逐路由生成静态 HTML + sitemap
+scripts/og-card.html          分享卡片的设计源
+scripts/make-og.mjs           截图并裁成 1200x630
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 常用命令
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev       # 本地开发（纯客户端渲染，配置走 fetch）
+npm run build     # 客户端构建 + SSR 构建 + 预渲染，产物在 dist/
+npm run og        # 重新生成 public/og-image.png
+npm run lint      # ESLint
 ```
+
+`npm run build` 是三步串起来的：先 `build:client` 出常规静态产物，再 `build:ssr` 把 `entry-server.tsx` 打成 Node 可执行的 bundle，最后 `prerender` 用它把每个路由渲染成 HTML。
+
+## 加一个项目
+
+编辑 `public/config/projects.json` 的 `projects` 数组，然后 `npm run build`。字段说明：
+
+| 字段 | 说明 |
+|------|------|
+| `id` | 详情页路径为 `/projects/<id>`，用小写短横线 |
+| `name` / `name_en` | 卡片和详情页标题 |
+| `description` / `description_en` | 一句话描述，同时用作该页的 meta description |
+| `longDescription` | 详情页正文，100–200 字 |
+| `tags` | 技术栈，卡片展示前 3 个；被 2 个以上项目共用的标签会出现在筛选栏 |
+| `image` | 预览图，建议 16:10，放在 `public/images/projects/` |
+| `links.demo` | 线上地址，确认能访问再填 |
+| `links.github` | 仓库地址，仅公开仓库才填，否则访客会撞 404 |
+| `date` | `YYYY-MM`，用于排序和年份显示 |
+| `status` | `active` / `wip` / `archived`，`wip` 会显示"开发中"徽标 |
+
+预览图用无头 Chrome 截线上首屏即可：
+
+```bash
+google-chrome --headless=new --no-sandbox --hide-scrollbars \
+  --window-size=1200,750 --virtual-time-budget=12000 \
+  --screenshot=public/images/projects/<id>.png https://<项目域名>
+```
+
+## 部署
+
+nginx 直接把 `dist/` 作为站点根目录（配置在 `/etc/nginx/conf.d/works.conf`，监听 8082），外网通过 Cloudflare Tunnel 接入，所以 `npm run build` 完成即上线，不需要重启服务。
+
+nginx 侧有两点是配合预渲染的：`try_files $uri $uri/index.html /index.html` 让 `/projects/hap` 这类路径直接命中预渲染文件而不产生补斜杠跳转；HTML 响应带 `no-cache`，因为项目配置被内联进了 HTML。

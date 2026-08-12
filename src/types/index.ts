@@ -48,3 +48,9 @@ export interface Config {
   profile: Profile;
   projects: Project[];
 }
+
+declare global {
+  interface Window {
+    __CONFIG__?: Config;
+  }
+}

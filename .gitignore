@@ -16,6 +16,10 @@ dist-ssr
 .playwright-mcp/
 works-*.png
 
+# 自用数据：本地端口、部署备注、探测结果，不入库
+public/config/private.json
+public/config/health.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

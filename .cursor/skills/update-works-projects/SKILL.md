@@ -39,6 +39,9 @@ Works 站点 (works.gggxie.com) 是一个 React + Vite 静态站点，通过 `/c
 cloudflared tunnel route dns 649a62a1-1213-4c48-963b-9a66f37c83fa <hostname>
 ```
 
+站点自带的服务面板 `/lab` 会自动读取这份 ingress 配置做探活，新增域名后无需登记；
+只有项目路径、运行方式一类的备注需要手动补到 `public/config/private.json`（不入库）。
+
 查看最新域名映射: `cat /etc/cloudflared/config.yml`
 
 隧道里配了 hostname 不等于线上可用，写入 `links.demo` 前先逐个探活:

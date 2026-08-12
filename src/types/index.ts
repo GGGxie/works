@@ -49,6 +49,40 @@ export interface Config {
   projects: Project[];
 }
 
+// 以下为自用视图（/lab）的数据，来自 scripts/probe-services.mjs 与手写的 private.json
+export interface ServiceProbe {
+  ok: boolean;
+  status: number;
+  ms: number;
+  error?: string;
+}
+
+export interface ServiceHealth {
+  hostname: string;
+  target: string;
+  public: ServiceProbe;
+  local: ServiceProbe;
+}
+
+export interface HealthReport {
+  checkedAt: string;
+  services: ServiceHealth[];
+}
+
+export interface ServiceNote {
+  project: string;
+  path?: string;
+  runtime?: string;
+  repo?: string;
+  note?: string;
+}
+
+export interface PrivateConfig {
+  notes?: Record<string, ServiceNote>;
+  offline?: { project: string; path?: string; note?: string }[];
+  ops?: { name: string; value: string }[];
+}
+
 declare global {
   interface Window {
     __CONFIG__?: Config;

@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components';
-import { Home, About, ProjectDetail } from './pages';
+import { Home, About, ProjectDetail, Lab } from './pages';
 import { useConfig } from './hooks/useConfig';
 import type { Config } from './types';
 import './App.css';
@@ -38,6 +38,7 @@ function App({ initialConfig }: AppProps) {
           <Route path="/" element={<Home config={config} />} />
           <Route path="/projects/:id" element={<ProjectDetail config={config} />} />
           <Route path="/about" element={<About profile={config.profile} />} />
+          <Route path="/lab" element={<Lab />} />
         </Routes>
       </main>
       <Footer />

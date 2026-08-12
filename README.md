@@ -58,6 +58,17 @@ google-chrome --headless=new --no-sandbox --hide-scrollbars \
   --screenshot=public/images/projects/<id>.png https://<项目域名>
 ```
 
+## 自用视图 /lab
+
+`/lab` 是给自己看的服务面板：所有对外服务的公网与本地可达性、状态码、耗时、本地端口，加上项目路径、运行方式和运维备忘。
+
+数据有两个来源，都不入库：
+
+- `config/health.json` 由 `npm run probe` 生成，服务清单直接读 Cloudflare Tunnel 的 ingress 配置，所以新增域名不需要另行登记。cron 每 5 分钟跑一次，`npm run build` 结束时也会跑一次。
+- `config/private.json` 手写，按域名补充项目路径、运行方式、仓库可见性等备注，可以缺省。
+
+这两个文件带本地端口等自用信息，所以 nginx 侧有访问闸门：本机直连放行，经 Cloudflare Tunnel 进来的请求必须带上正确的 `?k=`（key 在 `works.conf` 的 map 里）。导航里的入口只在本机或浏览器存过 key 时出现，预渲染出的静态 HTML 不含任何相关痕迹。
+
 ## 部署
 
 nginx 直接把 `dist/` 作为站点根目录（配置在 `/etc/nginx/conf.d/works.conf`，监听 8082），外网通过 Cloudflare Tunnel 接入，所以 `npm run build` 完成即上线，不需要重启服务。

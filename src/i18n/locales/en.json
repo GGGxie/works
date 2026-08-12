@@ -1,7 +1,8 @@
 {
   "nav": {
     "work": "Home",
-    "about": "About"
+    "about": "About",
+    "lab": "Status"
   },
   "meta": {
     "homeTitle": "GGGxie - Full-Stack Engineer Portfolio",

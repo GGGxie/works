@@ -1,7 +1,8 @@
 {
   "nav": {
     "work": "首页",
-    "about": "关于"
+    "about": "关于",
+    "lab": "面板"
   },
   "meta": {
     "homeTitle": "GGGxie - 全栈工程师作品集",

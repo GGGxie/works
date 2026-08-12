@@ -21,9 +21,14 @@ export function Home({ config }: HomeProps) {
   const displayBio = isEn ? (profile.bio_en || profile.bio) : profile.bio;
 
   const allTags = useMemo(() => {
-    const tags = new Set<string>();
-    projects.forEach((p) => p.tags.forEach((tag) => tags.add(tag)));
-    return Array.from(tags).sort();
+    const counts = new Map<string, number>();
+    projects.forEach((p) => p.tags.forEach((tag) => counts.set(tag, (counts.get(tag) ?? 0) + 1)));
+    // 只展示多个项目共用的标签，单项目专属标签起不到筛选作用
+    const shared = Array.from(counts.entries()).filter(([, count]) => count > 1);
+    const pool = shared.length > 0 ? shared : Array.from(counts.entries());
+    return pool
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([tag]) => tag);
   }, [projects]);
 
   const filteredProjects = useMemo(() => {

@@ -19,7 +19,8 @@
   },
   "projectCard": {
     "viewDemo": "Demo",
-    "viewCode": "代码"
+    "viewCode": "代码",
+    "wip": "开发中"
   },
   "footer": {
     "copyright": "保留所有权利"

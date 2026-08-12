@@ -19,7 +19,8 @@
   },
   "projectCard": {
     "viewDemo": "Demo",
-    "viewCode": "Code"
+    "viewCode": "Code",
+    "wip": "WIP"
   },
   "footer": {
     "copyright": "All rights reserved"

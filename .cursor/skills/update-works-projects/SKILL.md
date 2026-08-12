@@ -21,15 +21,25 @@ Works 站点 (works.gggxie.com) 是一个 React + Vite 静态站点，通过 `/c
 
 所有项目代码在 `/root/Document/` 下。用 `ls /root/Document/` 发现项目目录。
 
-已知项目域名映射（通过 Cloudflare Tunnel）:
+已知项目域名映射（通过 Cloudflare Tunnel，截至 2026-08）:
 
 | 项目 | 域名 | 本地端口 |
 |------|------|---------|
 | crazyA | crazya.gggxie.com | 8080 (nginx) |
 | works | works.gggxie.com | 8082 (nginx) |
 | SkillsHub | skills.gggxie.com | 8083 (nginx) |
+| MCPark | mcpark.gggxie.com | 8085 (nginx) |
+| HAP | hap.gggxie.com | 8087 (docker) |
+| HAP 官网 | gggxie.com / www.gggxie.com | 8089 (docker)，DNS 未解析 |
+| ReditCN | reddit.gggxie.com | 8090 (nginx) |
 
 查看最新域名映射: `cat /etc/cloudflared/config.yml`
+
+隧道里配了 hostname 不等于线上可用，写入 `links.demo` 前先逐个探活:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -m 10 https://<hostname>
+```
 
 ## 更新流程
 
@@ -80,12 +90,26 @@ cat /root/Document/works/public/config/projects.json
 
 规则:
 - `id` 使用目录名小写
-- `links.demo` 仅在 Cloudflare Tunnel 中有对应 hostname 时才添加
-- `links.github` 从 README 或 Git remote 获取
+- `links.demo` 仅在 hostname 探活返回 200 时才添加
+- `links.github` 从 README 或 Git remote 获取，且必须确认仓库是公开的（`curl -o /dev/null -w '%{http_code}' https://github.com/GGGxie/<Repo>` 返回 404 说明私有，此时不要写 github 链接）
+- `image` 为可选预览图，放在 `public/images/projects/<id>.png`，抓取方式见 Step 3.5
+- `status` 用 `wip` 标记只有原型/文档的项目，卡片会显示"开发中"徽标
 - `tags` 从实际技术栈提取（检查 package.json, go.mod, requirements.txt 等）
 - `date` 优先使用 git log 最早提交日期，无 git 时使用目录创建时间
 - `featured` 默认 `false`，已有的保持不变
 - 保留已有项目的手动编辑字段（如 longDescription），仅补充缺失字段或新增项目
+
+### Step 3.5: 抓取预览图（可选）
+
+对有线上地址的项目，用本机 headless Chrome 抓 16:10 首屏图：
+
+```bash
+google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+  --window-size=1200,750 --virtual-time-budget=12000 \
+  --screenshot=/root/Document/works/public/images/projects/<id>.png https://<hostname>
+```
+
+如果项目自带官网/落地页（例如 HAP 的 `landing/`，本地 8089），优先截官网而不是登录页。
 
 ### Step 4: 构建并部署
 
@@ -95,9 +119,23 @@ cd /root/Document/works && npm run build
 
 构建完成后 nginx 自动从 `dist/` 目录提供服务，无需重启。
 
-### Step 5: 验证（使用 Playwright MCP）
+### Step 5: 验证
 
-使用 Playwright MCP 工具对线上站点进行可视化验证，按以下顺序调用：
+先做一次数据侧校验，确认 nginx 吐出的是新配置：
+
+```bash
+curl -s https://works.gggxie.com/config/projects.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d['projects']))"
+```
+
+再做可视化验证。没有 Playwright MCP 时，用 headless Chrome 截长图人工看一眼即可：
+
+```bash
+google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+  --window-size=1440,2450 --virtual-time-budget=15000 \
+  --screenshot=/tmp/works-home.png "https://works.gggxie.com/?t=$(date +%s)"
+```
+
+Playwright MCP 可用时，按以下顺序调用：
 
 1. **打开首页**：调用 `browser_navigate`，url 设为 `https://works.gggxie.com`
 2. **截图首页**：调用 `browser_take_screenshot`，保存首页截图确认页面正常渲染

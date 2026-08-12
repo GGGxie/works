@@ -14,13 +14,45 @@
   },
   "projects": [
     {
+      "id": "mcpark",
+      "name": "MCPark - MCP 服务收集管理平台",
+      "name_en": "MCPark - MCP Service Management Platform",
+      "description": "收集、管理和分享 MCP 服务配置，一键生成 Cursor IDE deep link 方便安装",
+      "description_en": "Collect, manage and share MCP service configs, generate Cursor IDE deep links for one-click install",
+      "longDescription": "MCPark 是一个 B/S 架构的 Web 应用，用于收集、管理和分享 Model Context Protocol (MCP) 服务配置。用户可以添加自己开发的或收集到的 MCP 服务，系统会自动生成 Cursor IDE 的 deep link，方便其他用户一键安装。支持 SQLite 和 MySQL 双数据库。",
+      "tags": [
+        "Go",
+        "React",
+        "TypeScript",
+        "Vite",
+        "TailwindCSS",
+        "SQLite"
+      ],
+      "image": "/images/projects/mcpark.png",
+      "links": {
+        "github": "https://github.com/GGGxie/MCPark",
+        "demo": "https://mcpark.gggxie.com"
+      },
+      "featured": false,
+      "date": "2025-08",
+      "status": "active"
+    },
+    {
       "id": "crazya",
       "name": "CrazyA - AI + 玄学股票预测系统",
       "name_en": "CrazyA - AI + Mystical Stock Prediction",
       "description": "科技与玄学的完美结合：用 AI Agent 和奇门遁甲为投资决策提供独特视角",
       "description_en": "Where tech meets mysticism: AI Agent + ancient Qimen Dunjia divination for unique investment insights",
       "longDescription": "CrazyA 独创性地将现代 AI 技术（LangGraph ReACT Agent）、实时股票数据（财联社、东方财富、新浪财经）和传统玄学算法（奇门遁甲五行分析）三者深度融合。支持日度市场预测、个股决策分析和风险预警，为投资者提供多维度的参考建议。",
-      "tags": ["Python", "React", "LangGraph", "Go", "FastAPI", "MCP"],
+      "tags": [
+        "Python",
+        "React",
+        "LangGraph",
+        "Go",
+        "FastAPI",
+        "MCP"
+      ],
+      "image": "/images/projects/crazya.png",
       "links": {
         "github": "https://github.com/GGGxie/CrazyA",
         "demo": "https://crazya.gggxie.com"
@@ -36,28 +68,19 @@
       "description": "基于 AI 的海南旅游服务平台，提供智能行程规划、政策查询、实时咨询和网红地点避坑分析",
       "description_en": "AI-powered Hainan travel platform with smart itinerary planning, policy lookup, and viral spot reviews",
       "longDescription": "QiongTrip 是为三亚/海口游客打造的智能旅游助手。集成 LangGraph AI Agent 实现多轮对话和智能行程规划，支持免税政策查询、景点预约信息、网红景点真实评价分析等功能。采用 Go + Python 微服务架构，前端使用 React + TailwindCSS 构建现代化界面。",
-      "tags": ["React", "Go", "Python", "LangGraph", "FastAPI", "TailwindCSS"],
+      "tags": [
+        "React",
+        "Go",
+        "Python",
+        "LangGraph",
+        "FastAPI",
+        "TailwindCSS"
+      ],
       "links": {
         "github": "https://github.com/GGGxie/QiongTrip"
       },
       "featured": false,
       "date": "2025-12",
-      "status": "active"
-    },
-    {
-      "id": "mcpark",
-      "name": "MCPark - MCP 服务收集管理平台",
-      "name_en": "MCPark - MCP Service Management Platform",
-      "description": "收集、管理和分享 MCP 服务配置，一键生成 Cursor IDE deep link 方便安装",
-      "description_en": "Collect, manage and share MCP service configs, generate Cursor IDE deep links for one-click install",
-      "longDescription": "MCPark 是一个 B/S 架构的 Web 应用，用于收集、管理和分享 Model Context Protocol (MCP) 服务配置。用户可以添加自己开发的或收集到的 MCP 服务，系统会自动生成 Cursor IDE 的 deep link，方便其他用户一键安装。支持 SQLite 和 MySQL 双数据库。",
-      "tags": ["Go", "React", "TypeScript", "Vite", "TailwindCSS", "SQLite"],
-      "links": {
-        "github": "https://github.com/GGGxie/MCPark",
-        "demo": "https://mcpark.gggxie.com"
-      },
-      "featured": false,
-      "date": "2025-08",
       "status": "active"
     },
     {
@@ -67,7 +90,16 @@
       "description": "社区驱动的 AI Skills 仓库，发现、创建、学习和分享 Cursor Skills",
       "description_en": "Community-driven AI skills repository for discovering, creating, learning and sharing Cursor Skills",
       "longDescription": "SkillsHub 是一个社区驱动的 AI Skills 仓库平台，支持发现、创建、学习和分享 Cursor Agent Skills。采用 Go + React 全栈架构，支持中英双语、Google OAuth 登录、Markdown 渲染、评论点赞系统和技能搜索排序等功能。",
-      "tags": ["Go", "React", "TypeScript", "Vite", "TailwindCSS", "SQLite", "OAuth"],
+      "tags": [
+        "Go",
+        "React",
+        "TypeScript",
+        "Vite",
+        "TailwindCSS",
+        "SQLite",
+        "OAuth"
+      ],
+      "image": "/images/projects/skillshub.png",
       "links": {
         "github": "https://github.com/GGGxie/SkillsHub",
         "demo": "https://skills.gggxie.com"
@@ -75,6 +107,131 @@
       "featured": false,
       "date": "2026-02",
       "status": "active"
+    },
+    {
+      "id": "codeflow",
+      "name": "CodeFlow - 数字研发团队 Agent 系统",
+      "name_en": "CodeFlow - Digital Dev Team Agent System",
+      "description": "在 Cursor IDE 中一句话描述想法，由 11 个专业 Agent 全自动完成从需求到部署的完整研发流程",
+      "description_en": "Describe an idea in one sentence in Cursor IDE, 11 specialized agents auto-complete the full dev cycle from requirements to deployment",
+      "longDescription": "CodeFlow 是一套部署在 Cursor IDE 中的数字研发团队 Agent 系统，由工程经理统一调度 11 个专业角色 Agent（产品经理、UX 设计师、前后端架构师、开发、QA、安全审计、DevOps、运营分析）。用户只需一句话产品想法，系统自动多阶段并行完成需求分析 → 架构设计 → 代码实现 → 测试 → 安全审计 → 部署配置，全程维护项目状态支持中断续传。",
+      "tags": [
+        "Cursor",
+        "AI Agent",
+        "Shell",
+        "MCP"
+      ],
+      "links": {
+        "github": "https://github.com/GGGxie/CodeFlow"
+      },
+      "featured": false,
+      "date": "2026-03",
+      "status": "active"
+    },
+    {
+      "id": "reditcn",
+      "name": "ReditCN - 中文内容聚合社区",
+      "name_en": "ReditCN - Chinese Content Community",
+      "description": "面向中文用户的 Reddit 式社区，支持子版块、投票排序与嵌套评论讨论",
+      "description_en": "A Reddit-style community for Chinese users with sub-forums, vote-based ranking and threaded discussions",
+      "longDescription": "ReditCN 是一个以兴趣为导向、由社区自治的中文内容聚合平台。用户可以创建或加入子版块、发帖、投票和参与嵌套评论，内容曝光由社区投票决定而非算法推荐。后端采用 FastAPI + SQLAlchemy 异步栈，搭配 PostgreSQL 与 Redis；前端为 React + TypeScript + TailwindCSS，使用 React Query 和 Zustand 管理数据与状态，整体通过 Docker Compose 编排部署。",
+      "tags": [
+        "React",
+        "TypeScript",
+        "FastAPI",
+        "PostgreSQL",
+        "Redis",
+        "TailwindCSS"
+      ],
+      "image": "/images/projects/reditcn.png",
+      "links": {
+        "demo": "https://reddit.gggxie.com"
+      },
+      "featured": false,
+      "date": "2026-03",
+      "status": "active"
+    },
+    {
+      "id": "voyago",
+      "name": "Voyago - 一体化营销自动化平台",
+      "name_en": "Voyago - All-in-One Marketing Automation",
+      "description": "把邮件营销、多渠道消息、自动化工作流与数据分析整合到一个平台的 SaaS 产品",
+      "description_en": "A SaaS product unifying email marketing, multi-channel messaging, automation workflows and analytics",
+      "longDescription": "Voyago 面向 SaaS 公司和中小团队，目标是用一个工具覆盖从获客到留存的全链路营销：联系人管理、邮件营销、多渠道消息、可视化自动化工作流、社交媒体排期和 AI 内容创作。目前完成完整产品文档与前端实现，技术上采用 Next.js + Supabase，界面基于 Radix UI 组件体系，自动化工作流编辑器使用 React Flow，拖拽交互由 dnd-kit 实现。",
+      "tags": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Supabase",
+        "TailwindCSS"
+      ],
+      "links": {},
+      "featured": false,
+      "date": "2026-03",
+      "status": "wip"
+    },
+    {
+      "id": "writing-agent",
+      "name": "Writing Agent - 中文图文写作智能体",
+      "name_en": "Writing Agent - Chinese Content Writing Agent",
+      "description": "面向小红书和微信公众号的中文图文写作 Agent，支持选题、成文和多平台内容风格适配",
+      "description_en": "A Chinese content writing agent for Xiaohongshu and WeChat Official Accounts, supporting topic ideation, drafting, and platform-specific style adaptation",
+      "longDescription": "Writing Agent 是一个面向中文内容生产的 AI 写作系统，使用 LangGraph 编排多阶段写作流程，结合 FastAPI 提供服务接口，聚焦小红书、微信公众号等平台的图文内容生成。它适合用于技术、AI、哲学等选题的自动化内容创作，为后续内容发布系统提供核心写作能力。",
+      "tags": [
+        "Python",
+        "LangGraph",
+        "FastAPI",
+        "AI Agent",
+        "Content"
+      ],
+      "links": {
+        "github": "https://github.com/GGGxie/writing-agent"
+      },
+      "featured": false,
+      "date": "2026-04",
+      "status": "active"
+    },
+    {
+      "id": "hap",
+      "name": "HAP - AI 数字员工托管平台",
+      "name_en": "HAP - AI Digital Employee Platform",
+      "description": "面向中小企业的 AI Agent 托管平台，开箱即用地部署会对话、能用工具、带知识库的数字员工",
+      "description_en": "An AI agent hosting platform for SMBs: deploy conversational, tool-using digital employees with RAG knowledge bases",
+      "longDescription": "HAP（Hermes Agent Platform）基于 Hermes Agent 框架构建，将 Agent 以 in-process 方式集成进 FastAPI 后端，配合 Celery 任务队列和独立的 RAG 摄入 Worker 实现企业知识库检索。数据层使用 PostgreSQL + pgvector 存储业务数据与向量，Redis 承担缓存与队列；前端为 React 19 + Vite 6；部署侧提供本地 Docker Compose、CI/Staging 编排和 Kubernetes 生产清单，并内置 Prometheus + Grafana + Loki 可观测性栈。",
+      "tags": [
+        "AI Agent",
+        "React",
+        "FastAPI",
+        "Celery",
+        "PostgreSQL",
+        "Kubernetes"
+      ],
+      "image": "/images/projects/hap.png",
+      "links": {
+        "demo": "https://hap.gggxie.com"
+      },
+      "featured": true,
+      "date": "2026-06",
+      "status": "active"
+    },
+    {
+      "id": "mingming-agent",
+      "name": "明明炒股助手 - 飞书 A 股选股 Agent",
+      "name_en": "MingMing Stock Assistant - Feishu A-Share Screener",
+      "description": "在飞书里用自然语言描述选股条件，Agent 调工具完成可复现的 A 股筛选与复盘",
+      "description_en": "Describe screening criteria in natural language on Feishu; the agent runs reproducible A-share screening and reviews",
+      "longDescription": "明明炒股助手把自然语言转换成明确的选股参数：Hermes Agent 负责理解意图、补齐歧义和解释结果，选股 MCP 负责拉取行情、计算技术指标并执行条件筛选与排序，行情数据来自 cn-market-data 公开源。用户通过飞书机器人私聊使用，可以保存常用策略、生成自选股日报和盘后复盘。设计上坚持数据优先与计算确定：结论必须来自工具调用，指标由程序计算，相同参数下结果可完整复现。",
+      "tags": [
+        "AI Agent",
+        "MCP",
+        "Feishu",
+        "Node.js",
+        "Fintech"
+      ],
+      "links": {},
+      "featured": false,
+      "date": "2026-07",
+      "status": "wip"
     }
   ]
 }

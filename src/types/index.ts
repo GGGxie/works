@@ -77,10 +77,55 @@ export interface ServiceNote {
   note?: string;
 }
 
+export type ProjectClassification = 'matched' | 'local-only' | 'github-only' | 'unclassified';
+
+export interface ProjectInventoryItem {
+  id: string;
+  name: string;
+  directoryName: string;
+  path: string;
+  classification: ProjectClassification;
+  lifecycle: string;
+  stacks: string[];
+  git: {
+    isRepository: boolean;
+    branch?: string;
+    clean?: boolean;
+    lastCommitAt?: string;
+  };
+  github?: {
+    fullName: string;
+    url: string;
+    private?: boolean;
+  };
+  works: {
+    public: boolean;
+    demoUrl?: string;
+  };
+}
+
+export interface InventorySummary {
+  generatedAt: string;
+  total: number;
+  githubMatched: number;
+  public: number;
+  unclassified: number;
+  ignored?: { name: string; reason: string }[];
+}
+
+export interface PortfolioConfig {
+  feishuUrl?: string;
+  githubIssueUrl?: string;
+  syncedAt?: string;
+}
+
 export interface PrivateConfig {
   notes?: Record<string, ServiceNote>;
   offline?: { project: string; path?: string; note?: string }[];
   ops?: { name: string; value: string }[];
+  inventory?: InventorySummary;
+  projects?: ProjectInventoryItem[];
+  portfolio?: PortfolioConfig;
 }
 
 declare global {

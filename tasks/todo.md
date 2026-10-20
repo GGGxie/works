@@ -99,14 +99,14 @@
 **Description:** Extend private types and the Lab page to show inventory counts, reconciliation state, repository/public links, lifecycle metadata, and the Feishu portfolio link.
 
 **Acceptance criteria:**
-- [ ] Counts cover discovered, GitHub-matched, public, running, and unclassified projects.
-- [ ] Missing inventory or portfolio data degrades gracefully.
-- [ ] Existing service health rows remain functional.
+- [x] Counts cover discovered, GitHub-matched, public, running, and unclassified projects.
+- [x] Missing inventory or portfolio data degrades gracefully.
+- [x] Existing service health rows remain functional.
 
 **Verification:**
-- [ ] `npm run lint`
-- [ ] `npm run build`
-- [ ] Component output manually checked with complete and absent optional data.
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Component output manually checked with complete and absent optional data.
 
 **Dependencies:** Tasks 2, 3, and 4
 

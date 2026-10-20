@@ -142,14 +142,14 @@
 **Description:** Verify the final integration locally and in a real browser without altering public portfolio behavior.
 
 **Acceptance criteria:**
-- [ ] Inventory tests, lint, and production build pass.
-- [ ] `/lab` displays the project control panel and existing service health.
-- [ ] Home, About, and one project detail page remain unchanged and error-free.
+- [x] Inventory tests, lint, and production build pass.
+- [x] `/lab` displays the project control panel and existing service health.
+- [x] Home, About, and one project detail page remain unchanged and error-free.
 
 **Verification:**
-- [ ] `node --test tests/project-inventory.test.mjs`
-- [ ] `npm run inventory:check && npm run lint && npm run build`
-- [ ] Browser console and network checks show no new errors.
+- [x] `node --test tests/project-inventory.test.mjs`
+- [x] `npm run inventory:check && npm run lint && npm run build`
+- [x] Browser console and network checks show no new errors.
 
 **Dependencies:** Tasks 1–6
 
@@ -159,7 +159,7 @@
 
 ## Checkpoint: Complete
 
-- [ ] All task acceptance criteria pass.
-- [ ] No secrets are present in tracked changes.
-- [ ] Pre-existing user changes are not staged or modified.
-- [ ] Ready for user review.
+- [x] All task acceptance criteria pass.
+- [x] No secrets are present in tracked changes.
+- [x] Pre-existing user changes are not staged or modified.
+- [x] Ready for user review.

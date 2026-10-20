@@ -11,6 +11,9 @@
     "prerender": "node scripts/prerender.mjs",
     "probe": "node scripts/probe-services.mjs",
     "og": "node scripts/make-og.mjs",
+    "inventory": "node scripts/inventory-projects.mjs",
+    "inventory:check": "node scripts/inventory-projects.mjs --check",
+    "test": "node --test tests/*.test.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

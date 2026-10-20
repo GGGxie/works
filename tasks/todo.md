@@ -24,14 +24,14 @@
 **Description:** Add a deterministic scanner that reconciles top-level local folders, Git metadata, GitHub repository metadata, and works entries while preserving manual private configuration.
 
 **Acceptance criteria:**
-- [ ] Every top-level folder is represented or ignored with a reason.
-- [ ] Matching and classification are deterministic; duplicate IDs fail validation.
-- [ ] Existing `notes`, `offline`, and `ops` survive generation unchanged.
+- [x] Every top-level folder is represented or ignored with a reason.
+- [x] Matching and classification are deterministic; duplicate IDs fail validation.
+- [x] Existing `notes`, `offline`, and `ops` survive generation unchanged.
 
 **Verification:**
-- [ ] `node --test tests/project-inventory.test.mjs`
-- [ ] `npm run inventory:check`
-- [ ] Run generation twice and confirm the second run has no diff.
+- [x] `node --test tests/project-inventory.test.mjs`
+- [x] `npm run inventory:check`
+- [x] Run generation twice and confirm the second run has no diff.
 
 **Dependencies:** None
 
@@ -45,9 +45,9 @@
 
 ## Checkpoint: Inventory foundation
 
-- [ ] Task 1 scope verification passes.
-- [ ] Task 2 tests and check mode pass.
-- [ ] Generated inventory is reviewed before external import.
+- [x] Task 1 scope verification passes.
+- [x] Task 2 tests and check mode pass.
+- [x] Generated inventory is reviewed before external import.
 
 ## Task 3: Create the Feishu project portfolio
 

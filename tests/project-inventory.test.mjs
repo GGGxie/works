@@ -2,11 +2,18 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  isEmptyDirectory,
   mergePrivateConfig,
   normalizeProjectId,
   reconcileProjects,
   validateInventory,
 } from '../scripts/lib/project-inventory.mjs';
+
+test('only treats directories with no entries as empty', () => {
+  assert.equal(isEmptyDirectory([]), true);
+  assert.equal(isEmptyDirectory(['.git']), false);
+  assert.equal(isEmptyDirectory(['README.md']), false);
+});
 
 test('normalizes project names into stable ids', () => {
   assert.equal(normalizeProjectId(' Writing Agent '), 'writing-agent');

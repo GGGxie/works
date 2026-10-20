@@ -115,6 +115,7 @@ export interface InventorySummary {
 
 export interface PortfolioConfig {
   feishuUrl?: string;
+  githubProjectUrl?: string;
   githubIssueUrl?: string;
   syncedAt?: string;
 }

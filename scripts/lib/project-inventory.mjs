@@ -1,5 +1,9 @@
 const GITHUB_URL_PATTERN = /github\.com[/:]([^/]+)\/([^/#]+?)(?:\.git)?$/i;
 
+export function isEmptyDirectory(entries) {
+  return entries.length === 0;
+}
+
 export function normalizeProjectId(name) {
   return name
     .trim()

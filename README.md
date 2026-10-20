@@ -77,7 +77,7 @@ google-chrome --headless=new --no-sandbox --hide-scrollbars \
 
 三套系统各管一类事实，避免重复维护：
 
-- **GitHub** 管代码、Issue 和 Pull Request。具体开发任务放在对应项目仓库；跨项目导航使用 [works 协调 Issue](https://github.com/GGGxie/works/issues/1)。
+- **GitHub** 管代码、Issue 和 Pull Request。具体开发任务放在对应项目仓库；跨项目总览使用 [个人项目研发总览](https://github.com/users/GGGxie/projects/2)，约定和补充说明放在 [works 协调 Issue](https://github.com/GGGxie/works/issues/1)。
 - **飞书多维表格** 管项目生命周期、优先级、运行状态和下一步行动。它是日常查看与整理项目组合的主界面。
 - **本机 `/root/Document/`** 管真实目录、Git 分支和工作区状态；works 扫描这些元数据并投影到 `/lab`。
 
@@ -91,7 +91,7 @@ npm run lint
 npm run build
 ```
 
-扫描器只检查顶层目录、常见清单文件名和 Git 元数据，不读取源码、`.env`、凭据或提交正文。无法确定用途的目录会进入“待分类”，不会自动标成活跃项目。`public/config/private.json` 已被 Git 忽略，里面的本地路径、私有仓库信息、飞书标识和运维命令不得复制到公开配置。
+扫描器只检查顶层非空目录、常见清单文件名和 Git 元数据，不读取源码、`.env`、凭据或提交正文。空目录会被忽略；无法确定用途的非空目录会进入“待分类”，不会自动标成活跃项目。`public/config/private.json` 已被 Git 忽略，里面的本地路径、私有仓库信息、飞书标识和运维命令不得复制到公开配置。
 
 ## 部署
 

@@ -153,7 +153,7 @@ export function Lab() {
           </div>
         </div>
 
-        {(priv?.portfolio?.feishuUrl || priv?.portfolio?.githubIssueUrl) && (
+        {(priv?.portfolio?.feishuUrl || priv?.portfolio?.githubProjectUrl || priv?.portfolio?.githubIssueUrl) && (
           <div className="lab-hubs" aria-label="项目管理入口">
             <div className="lab-hubs-copy">
               <LayoutDashboard size={18} />
@@ -166,6 +166,11 @@ export function Lab() {
               {priv.portfolio.feishuUrl && (
                 <a href={priv.portfolio.feishuUrl} target="_blank" rel="noopener noreferrer">
                   飞书总览 <ArrowUpRight size={14} />
+                </a>
+              )}
+              {priv.portfolio.githubProjectUrl && (
+                <a href={priv.portfolio.githubProjectUrl} target="_blank" rel="noopener noreferrer">
+                  GitHub Project <ArrowUpRight size={14} />
                 </a>
               )}
               {priv.portfolio.githubIssueUrl && (

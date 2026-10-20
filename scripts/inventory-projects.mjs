@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 import {
   githubFullNameFromUrl,
+  isEmptyDirectory,
   mergePrivateConfig,
   reconcileProjects,
   validateInventory,
@@ -91,6 +92,10 @@ function discoverLocalProjects(root) {
       continue;
     }
     const path = join(root, entry.name);
+    if (isEmptyDirectory(readdirSync(path))) {
+      ignored.push({ name: entry.name, reason: 'empty-directory' });
+      continue;
+    }
     projects.push({
       directoryName: entry.name,
       path,

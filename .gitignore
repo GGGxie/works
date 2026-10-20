@@ -19,6 +19,9 @@ works-*.png
 # 自用数据：本地端口、部署备注、探测结果，不入库
 public/config/private.json
 public/config/health.json
+# 探活告警的运行时状态与日志
+.probe-state.json
+.probe-alerts.log
 
 # Editor directories and files
 .vscode/*

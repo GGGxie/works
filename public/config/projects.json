@@ -62,28 +62,6 @@
       "status": "active"
     },
     {
-      "id": "qiongtrip",
-      "name": "QiongTrip - 海南智能旅游AI助手",
-      "name_en": "QiongTrip - Hainan AI Travel Assistant",
-      "description": "基于 AI 的海南旅游服务平台，提供智能行程规划、政策查询、实时咨询和网红地点避坑分析",
-      "description_en": "AI-powered Hainan travel platform with smart itinerary planning, policy lookup, and viral spot reviews",
-      "longDescription": "QiongTrip 是为三亚/海口游客打造的智能旅游助手。集成 LangGraph AI Agent 实现多轮对话和智能行程规划，支持免税政策查询、景点预约信息、网红景点真实评价分析等功能。采用 Go + Python 微服务架构，前端使用 React + TailwindCSS 构建现代化界面。",
-      "tags": [
-        "React",
-        "Go",
-        "Python",
-        "LangGraph",
-        "FastAPI",
-        "TailwindCSS"
-      ],
-      "links": {
-        "github": "https://github.com/GGGxie/QiongTrip"
-      },
-      "featured": false,
-      "date": "2025-12",
-      "status": "active"
-    },
-    {
       "id": "skillshub",
       "name": "SkillsHub - AI Skills 社区平台",
       "name_en": "SkillsHub - AI Skills Community Platform",
@@ -174,9 +152,9 @@
       "id": "writing-agent",
       "name": "Writing Agent - 中文图文写作智能体",
       "name_en": "Writing Agent - Chinese Content Writing Agent",
-      "description": "面向小红书和微信公众号的中文图文写作 Agent，支持选题、成文和多平台内容风格适配",
-      "description_en": "A Chinese content writing agent for Xiaohongshu and WeChat Official Accounts, supporting topic ideation, drafting, and platform-specific style adaptation",
-      "longDescription": "Writing Agent 是一个面向中文内容生产的 AI 写作系统，使用 LangGraph 编排多阶段写作流程，结合 FastAPI 提供服务接口，聚焦小红书、微信公众号等平台的图文内容生成。它适合用于技术、AI、哲学等选题的自动化内容创作，为后续内容发布系统提供核心写作能力。",
+      "description": "以来源分级和证据闸门驱动的中文科技内容工作台，支持研究、双平台成稿与自动质检",
+      "description_en": "An evidence-gated Chinese tech editorial workspace for research, dual-platform drafting, and automated quality checks",
+      "longDescription": "Writing Agent 面向科技与 AI 内容生产，将 RSSHub、X 和人工素材汇入统一工作流，完成来源解析、A/B/C 分级、研究整理、选题评分与证据判断。证据不足时只保存研究材料；条件满足后由 LangGraph 编排公众号和小红书草稿、配图计划及机械质检，最终仍由人工确认发布。",
       "tags": [
         "Python",
         "LangGraph",
@@ -185,10 +163,12 @@
         "Content"
       ],
       "links": {
+        "demo": "https://writing.gggxie.com",
         "github": "https://github.com/GGGxie/writing-agent"
       },
+      "image": "/images/projects/writing-agent.png",
       "featured": false,
-      "date": "2026-04",
+      "date": "2026-09",
       "status": "active"
     },
     {

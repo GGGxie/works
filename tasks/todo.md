@@ -122,13 +122,13 @@
 **Description:** Document how discovery, Feishu curation, GitHub work, and works projection fit together and how to rerun inventory safely.
 
 **Acceptance criteria:**
-- [ ] README identifies each source of truth.
-- [ ] Commands for check, generate, lint, and build are documented.
-- [ ] Privacy and access-gate behavior is explicit.
+- [x] README identifies each source of truth.
+- [x] Commands for check, generate, lint, and build are documented.
+- [x] Privacy and access-gate behavior is explicit.
 
 **Verification:**
-- [ ] Every documented command exists in `package.json`.
-- [ ] `git diff --check` passes.
+- [x] Every documented command exists in `package.json`.
+- [x] `git diff --check` passes.
 
 **Dependencies:** Tasks 2 and 5
 

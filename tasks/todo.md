@@ -54,14 +54,14 @@
 **Description:** Create the user-owned `个人项目总览` Base, add the approved schema and views, validate a small sample, then import all discovered projects.
 
 **Acceptance criteria:**
-- [ ] Required fields and select options exist and read back correctly.
-- [ ] Every discovered project has exactly one record keyed by 项目ID.
-- [ ] Views `全部项目`, `活跃项目`, `运行状态`, and `待分类` exist.
+- [x] Required fields and select options exist and read back correctly.
+- [x] Every discovered project has exactly one record keyed by 项目ID.
+- [x] Views `全部项目`, `活跃项目`, `运行状态`, and `待分类` exist.
 
 **Verification:**
-- [ ] List and read back tables, fields, records, and views using `--as user`.
-- [ ] Record count matches unique inventory project count.
-- [ ] Base URL opens for the authenticated user.
+- [x] List and read back tables, fields, records, and views using `--as user`.
+- [x] Record count matches unique inventory project count.
+- [x] Base URL opens for the authenticated user.
 
 **Dependencies:** Tasks 1 and 2
 
@@ -75,13 +75,13 @@
 **Description:** Search for the exact portfolio issue title in `GGGxie/works`, create it only if absent, and cross-link the Feishu Base and active repositories.
 
 **Acceptance criteria:**
-- [ ] Exactly one open coordination issue exists.
-- [ ] It links the verified repository set and Feishu Base.
-- [ ] No existing Issue metadata is modified.
+- [x] Exactly one open coordination issue exists.
+- [x] It links the verified repository set and Feishu Base.
+- [x] No existing Issue metadata is modified.
 
 **Verification:**
-- [ ] Read the resulting issue through the GitHub connector.
-- [ ] Re-run the search and confirm no duplicate would be created.
+- [x] Read the resulting issue through the GitHub connector.
+- [x] Re-run the search and confirm no duplicate would be created.
 
 **Dependencies:** Task 3
 
@@ -91,8 +91,8 @@
 
 ## Checkpoint: External surfaces
 
-- [ ] Feishu schema, records, and views are verified.
-- [ ] GitHub issue and Feishu Base cross-link each other where supported.
+- [x] Feishu schema, records, and views are verified.
+- [x] GitHub issue and Feishu Base cross-link each other where supported.
 
 ## Task 5: Render project reconciliation in `/lab`
 

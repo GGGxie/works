@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { evaluateHealth, formatAlertText } from './lib/probe-alerts.mjs';
+import { evaluateHealth, formatAlertText, isDegraded, normalizeProbePaths } from './lib/probe-alerts.mjs';
 
 const TUNNEL_CONFIG = process.env.TUNNEL_CONFIG || '/etc/cloudflared/config.yml';
 const TIMEOUT_MS = 8000;
@@ -17,6 +17,7 @@ const ALERT_RECEIVE_TYPE = process.env.PROBE_ALERT_RECEIVE_TYPE || 'open_id';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const statePath = path.join(root, '.probe-state.json');
 const alertLogPath = path.join(root, '.probe-alerts.log');
+const probePathsFile = process.env.PROBE_PATHS_FILE || path.join(root, 'scripts', 'probe-paths.json');
 
 function readIngress(file) {
   if (!fs.existsSync(file)) return [];
@@ -55,14 +56,38 @@ async function probe(url) {
   }
 }
 
+// 首页由 nginx 的 SPA 兜底恒为 200，后端停了也看不出来；这里按配置再探测每个站点的 API 路径
+function readProbePaths() {
+  try {
+    return normalizeProbePaths(JSON.parse(fs.readFileSync(probePathsFile, 'utf8')));
+  } catch (err) {
+    if (err.code !== 'ENOENT') console.error(`probe-paths.json ignored: ${err.message}`);
+    return normalizeProbePaths(undefined);
+  }
+}
+
+const probePaths = readProbePaths();
 const ingress = readIngress(TUNNEL_CONFIG);
 const services = await Promise.all(
-  ingress.map(async (entry) => ({
-    hostname: entry.hostname,
-    target: entry.target,
-    public: await probe(`https://${entry.hostname}`),
-    local: await probe(entry.target),
-  }))
+  ingress.map(async (entry) => {
+    const service = {
+      hostname: entry.hostname,
+      target: entry.target,
+      public: await probe(`https://${entry.hostname}`),
+      local: await probe(entry.target),
+    };
+    const paths = probePaths.get(entry.hostname);
+    if (paths) {
+      service.extra = await Promise.all(
+        paths.map(async (extraPath) => ({
+          path: extraPath,
+          public: await probe(`https://${entry.hostname}${extraPath}`),
+          local: await probe(`${entry.target.replace(/\/$/, '')}${extraPath}`),
+        }))
+      );
+    }
+    return service;
+  })
 );
 
 const health = { checkedAt: new Date().toISOString(), services };
@@ -108,7 +133,7 @@ try {
   console.error(`alert evaluation failed: ${err.message}`);
 }
 
-const down = services.filter((service) => !service.public.ok || !service.local.ok);
+const down = services.filter(isDegraded);
 console.log(
   `probed ${services.length} services, ${down.length} degraded${
     down.length ? ': ' + down.map((service) => service.hostname).join(', ') : ''

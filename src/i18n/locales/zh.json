@@ -26,7 +26,8 @@
     "viewDemo": "Demo",
     "viewCode": "代码",
     "viewDetail": "查看详情",
-    "wip": "开发中"
+    "wip": "开发中",
+    "archived": "已归档"
   },
   "detail": {
     "back": "返回项目列表",

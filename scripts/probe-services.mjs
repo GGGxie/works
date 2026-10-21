@@ -7,7 +7,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { evaluateHealth, formatAlertText, isDegraded, normalizeProbePaths } from './lib/probe-alerts.mjs';
+import {
+  evaluateHealth,
+  formatAlertText,
+  isDegraded,
+  normalizePausedHosts,
+  normalizeProbePaths,
+  splitPaused,
+} from './lib/probe-alerts.mjs';
 
 const TUNNEL_CONFIG = process.env.TUNNEL_CONFIG || '/etc/cloudflared/config.yml';
 const TIMEOUT_MS = 8000;
@@ -18,6 +25,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const statePath = path.join(root, '.probe-state.json');
 const alertLogPath = path.join(root, '.probe-alerts.log');
 const probePathsFile = process.env.PROBE_PATHS_FILE || path.join(root, 'scripts', 'probe-paths.json');
+const pausedFile = process.env.PROBE_PAUSED_FILE || path.join(root, 'scripts', 'probe-paused.json');
 
 function readIngress(file) {
   if (!fs.existsSync(file)) return [];
@@ -66,9 +74,19 @@ function readProbePaths() {
   }
 }
 
+// 暂停名单：有意停掉的服务（开发时才启动）。仍探测并展示，但不告警、不计入降级
+function readPausedHosts() {
+  try {
+    return normalizePausedHosts(JSON.parse(fs.readFileSync(pausedFile, 'utf8')));
+  } catch (err) {
+    if (err.code !== 'ENOENT') console.error(`probe-paused.json ignored: ${err.message}`);
+    return normalizePausedHosts(undefined);
+  }
+}
+
 const probePaths = readProbePaths();
 const ingress = readIngress(TUNNEL_CONFIG);
-const services = await Promise.all(
+const probed = await Promise.all(
   ingress.map(async (entry) => {
     const service = {
       hostname: entry.hostname,
@@ -88,6 +106,11 @@ const services = await Promise.all(
     }
     return service;
   })
+);
+const { active: activeServices, paused: pausedServices } = splitPaused(probed, readPausedHosts());
+// 保持 ingress 的原有顺序，/lab 展示时暂停的服务带 paused 标记
+const services = probed.map(
+  (service) => pausedServices.find((item) => item.hostname === service.hostname) ?? service
 );
 
 const health = { checkedAt: new Date().toISOString(), services };
@@ -126,14 +149,14 @@ function notify(events, checkedAt) {
 }
 
 try {
-  const { state, events } = evaluateHealth(readState(), services);
+  const { state, events } = evaluateHealth(readState(), activeServices);
   fs.writeFileSync(statePath, `${JSON.stringify(state, null, 2)}\n`);
   notify(events, health.checkedAt);
 } catch (err) {
   console.error(`alert evaluation failed: ${err.message}`);
 }
 
-const down = services.filter(isDegraded);
+const down = activeServices.filter(isDegraded);
 console.log(
   `probed ${services.length} services, ${down.length} degraded${
     down.length ? ': ' + down.map((service) => service.hostname).join(', ') : ''

@@ -173,3 +173,46 @@ test('normalizeProbePaths tolerates missing or non-object input', () => {
   assert.equal(normalizeProbePaths(null).size, 0);
   assert.equal(normalizeProbePaths([]).size, 0);
 });
+
+// ── 暂停名单：有意停掉的服务不告警、不计入降级 ────────────────────────────────
+import { normalizePausedHosts, splitPaused } from '../scripts/lib/probe-alerts.mjs';
+
+test('normalizePausedHosts keeps only non-empty strings', () => {
+  const result = normalizePausedHosts(['a.example.com', '', 42, null, 'b.example.com']);
+  assert.deepEqual([...result].sort(), ['a.example.com', 'b.example.com']);
+});
+
+test('normalizePausedHosts tolerates missing or malformed input', () => {
+  assert.equal(normalizePausedHosts(undefined).size, 0);
+  assert.equal(normalizePausedHosts({}).size, 0);
+  assert.equal(normalizePausedHosts('a.example.com').size, 0);
+});
+
+test('splitPaused separates paused services and marks them', () => {
+  const services = [publicDown('a.example.com'), healthy('b.example.com')];
+  const { active, paused } = splitPaused(services, new Set(['a.example.com']));
+  assert.deepEqual(active.map((service) => service.hostname), ['b.example.com']);
+  assert.deepEqual(paused.map((service) => service.hostname), ['a.example.com']);
+  assert.equal(paused[0].paused, true);
+  assert.equal(services[0].paused, undefined, 'must not mutate the input');
+});
+
+test('a paused service never produces events and is dropped from the alert state', () => {
+  const services = [publicDown('a.example.com')];
+  const first = evaluateHealth({}, services);
+  const second = evaluateHealth(first.state, services);
+  assert.deepEqual(second.events.map((event) => event.type), ['down']);
+
+  const { active } = splitPaused(services, new Set(['a.example.com']));
+  const afterPause = evaluateHealth(second.state, active);
+  assert.deepEqual(afterPause.events, [], 'no recovery notice for a deliberately stopped service');
+  assert.equal('a.example.com' in afterPause.state.services, false);
+});
+
+test('removing a service from the paused list starts counting from zero', () => {
+  const services = [publicDown('a.example.com')];
+  const { active } = splitPaused(services, new Set());
+  const { events, state } = evaluateHealth({}, active);
+  assert.deepEqual(events, []);
+  assert.equal(state.services['a.example.com'].failures, 1);
+});

@@ -17,6 +17,22 @@ function failureDetail(service) {
   return detail.filter(Boolean);
 }
 
+// 暂停名单：有意停掉的服务（如开发时才启动的项目）。仍然探测并展示，但不告警、不计入降级。
+export function normalizePausedHosts(raw) {
+  if (!Array.isArray(raw)) return new Set();
+  return new Set(raw.filter((hostname) => typeof hostname === 'string' && hostname.length > 0));
+}
+
+export function splitPaused(services, pausedHosts) {
+  const active = [];
+  const paused = [];
+  for (const service of services) {
+    if (pausedHosts.has(service.hostname)) paused.push({ ...service, paused: true });
+    else active.push(service);
+  }
+  return { active, paused };
+}
+
 export function isDegraded(service) {
   return failureDetail(service).length > 0;
 }

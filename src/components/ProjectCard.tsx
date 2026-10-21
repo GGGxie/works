@@ -50,8 +50,8 @@ const stack = [
             <Link to={detailPath}>{displayName}</Link>
           </h3>
           <div className="project-meta">
-            {project.status === 'wip' && (
-              <span className="project-status">{t('projectCard.wip')}</span>
+            {(project.status === 'wip' || project.status === 'archived') && (
+              <span className="project-status">{t(`projectCard.${project.status}`)}</span>
             )}
             <span className="project-year">{project.date.split('-')[0]}</span>
           </div>

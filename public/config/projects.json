@@ -53,13 +53,10 @@
         "MCP"
       ],
       "image": "/images/projects/crazya.png",
-      "links": {
-        "github": "https://github.com/GGGxie/CrazyA",
-        "demo": "https://crazya.gggxie.com"
-      },
-      "featured": true,
+      "links": {},
+      "featured": false,
       "date": "2025-10",
-      "status": "active"
+      "status": "archived"
     },
     {
       "id": "skillshub",
@@ -122,12 +119,10 @@
         "TailwindCSS"
       ],
       "image": "/images/projects/reditcn.png",
-      "links": {
-        "demo": "https://reddit.gggxie.com"
-      },
+      "links": {},
       "featured": false,
       "date": "2026-03",
-      "status": "active"
+      "status": "archived"
     },
     {
       "id": "voyago",

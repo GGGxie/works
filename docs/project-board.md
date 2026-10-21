@@ -58,3 +58,15 @@ node scripts/board/sync-board.mjs             # 实际写入
 2. 看板 `Project` 字段里加一个选项（网页 Settings 或 `gh project field-create`）
 3. `board.config.json` 的 `repos` 与 `projectNames` 里补上
 4. 手动在看板加一张项目卡片（`Kind=项目`），之后同步脚本会维护它
+
+## 定时同步
+cron 每天 09:15 运行一次同步（幂等），输出追加到 `/root/.cache/board-sync.log`：
+
+```
+15 9 * * * cd /root/Document/works && /usr/local/bin/node scripts/board/sync-board.mjs >> /root/.cache/board-sync.log 2>&1
+```
+
+- 依赖 `gh` 已登录、`feishu-cli` 的 user token 有效（过期后同步会失败，日志里能看到；重新登录飞书即可恢复）
+- 工作树必须保持在 `codex/project-control`（探活脚本也依赖它）
+- 想立刻刷新：`node scripts/board/sync-board.mjs`；只看会改什么：加 `--dry-run`
+- 停用：`crontab -e` 删掉这一行（修改前的备份在 `/root/.cache/crontab.bak.*`）

@@ -1,0 +1,16 @@
+{
+  "owner": "GGGxie",
+  "projectNumber": 2,
+  "repos": [
+    "works", "TRadar", "HAP", "writing-agent", "SkillsHub", "MCPark",
+    "mingming-agent", "Voyago", "articles", "CodeFlow", "crazyA", "ReditCN"
+  ],
+  "projectNames": {
+    "writing-agent": "writing-agent", "tradar": "TRadar", "works": "works", "hap": "HAP",
+    "skillshub": "SkillsHub", "mcpark": "MCPark", "mingming-agent": "mingming-agent",
+    "voyago": "Voyago", "articles": "articles", "codeflow": "CodeFlow",
+    "crazya": "crazyA", "reditcn": "ReditCN"
+  },
+  "ignoreIssues": ["works#1", "HAP#10"],
+  "riskKeywords": ["security", "安全", "密钥", "泄露", "漏洞", "风险", "secret"]
+}

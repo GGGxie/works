@@ -3,13 +3,34 @@
 
 const DEFAULT_THRESHOLD = 2;
 
-function describeFailure(label, result) {
+function describeFailure(label, result, path = '') {
   if (result.ok) return null;
-  return `${label} ${result.error || result.status}`;
+  return `${label}${path ? ` ${path}` : ''} ${result.error || result.status}`;
 }
 
 function failureDetail(service) {
-  return [describeFailure('public', service.public), describeFailure('local', service.local)].filter(Boolean);
+  const detail = [describeFailure('public', service.public), describeFailure('local', service.local)];
+  // 附加路径（如 /api/skills）：首页由 nginx 兜底恒为 200，只有这些路径能暴露后端已停
+  for (const extra of service.extra ?? []) {
+    detail.push(describeFailure('public', extra.public, extra.path), describeFailure('local', extra.local, extra.path));
+  }
+  return detail.filter(Boolean);
+}
+
+export function isDegraded(service) {
+  return failureDetail(service).length > 0;
+}
+
+// 配置形如 { "host": ["/api/x"] }；只保留以 / 开头的字符串路径，其余丢弃，避免一条坏配置拖垮整次探活
+export function normalizeProbePaths(raw) {
+  const result = new Map();
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return result;
+  for (const [hostname, paths] of Object.entries(raw)) {
+    if (!Array.isArray(paths)) continue;
+    const valid = paths.filter((path) => typeof path === 'string' && path.startsWith('/'));
+    if (valid.length > 0) result.set(hostname, valid);
+  }
+  return result;
 }
 
 function previousServices(previousState) {

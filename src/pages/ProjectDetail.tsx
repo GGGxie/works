@@ -62,7 +62,7 @@ export function ProjectDetail({ config }: ProjectDetailProps) {
         <header className="detail-header">
           <div className="detail-title-row">
             <h1 className="detail-title">{displayName}</h1>
-            {(project.status === 'wip' || project.status === 'archived') && (
+            {project.status && project.status !== 'active' && (
               <span className="detail-status">{t(`projectCard.${project.status}`)}</span>
             )}
           </div>

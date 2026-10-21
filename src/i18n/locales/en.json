@@ -27,7 +27,8 @@
     "viewCode": "Code",
     "viewDetail": "View details",
     "wip": "WIP",
-    "archived": "Archived"
+    "archived": "Archived",
+    "paused": "Paused"
   },
   "detail": {
     "back": "Back to projects",

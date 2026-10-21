@@ -19,7 +19,7 @@ export interface Project {
   links: ProjectLinks;
   featured: boolean;
   date: string;
-  status?: 'active' | 'archived' | 'wip';
+  status?: 'active' | 'archived' | 'paused' | 'wip';
 }
 
 // 社交链接类型

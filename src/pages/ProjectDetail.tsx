@@ -62,8 +62,8 @@ export function ProjectDetail({ config }: ProjectDetailProps) {
         <header className="detail-header">
           <div className="detail-title-row">
             <h1 className="detail-title">{displayName}</h1>
-            {project.status === 'wip' && (
-              <span className="detail-status">{t('projectCard.wip')}</span>
+            {(project.status === 'wip' || project.status === 'archived') && (
+              <span className="detail-status">{t(`projectCard.${project.status}`)}</span>
             )}
           </div>
           <p className="detail-date">{project.date}</p>

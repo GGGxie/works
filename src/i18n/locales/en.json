@@ -26,7 +26,8 @@
     "viewDemo": "Demo",
     "viewCode": "Code",
     "viewDetail": "View details",
-    "wip": "WIP"
+    "wip": "WIP",
+    "archived": "Archived"
   },
   "detail": {
     "back": "Back to projects",

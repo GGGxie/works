@@ -128,20 +128,20 @@
       "id": "voyago",
       "name": "Voyago - 一体化营销自动化平台",
       "name_en": "Voyago - All-in-One Marketing Automation",
-      "description": "把邮件营销、多渠道消息、自动化工作流与数据分析整合到一个平台的 SaaS 产品",
-      "description_en": "A SaaS product unifying email marketing, multi-channel messaging, automation workflows and analytics",
-      "longDescription": "Voyago 面向 SaaS 公司和中小团队，目标是用一个工具覆盖从获客到留存的全链路营销：联系人管理、邮件营销、多渠道消息、可视化自动化工作流、社交媒体排期和 AI 内容创作。目前完成完整产品文档与前端实现，技术上采用 Next.js + Supabase，界面基于 Radix UI 组件体系，自动化工作流编辑器使用 React Flow，拖拽交互由 dnd-kit 实现。",
+      "description": "联系人、邮件活动、自动化工作流、Webhook、社交发布与分析共用一份联系人档案的自用营销平台",
+      "description_en": "A self-hosted marketing platform where contacts, email campaigns, workflows, webhooks, social publishing and analytics share one contact profile",
+      "longDescription": "Voyago 是自用的一体化营销自动化平台，所有模块共享同一份联系人档案和事件流：联系人支持 CSV 导入、标签与动态分组；邮件有块编辑器、定时分批发送、打开点击追踪和一键退订；可视化工作流支持触发、等待、条件与 Webhook 节点；另有签名出站 Webhook、公众号与 X 发布、AI 文案和活动报表。技术上采用 Next.js + PostgreSQL（Drizzle），后台任务由 pg-boss 驱动，账号体系支持邀请成员与两步验证，经 Docker Compose 部署在本机，不开放注册。",
       "tags": [
         "Next.js",
-        "React",
         "TypeScript",
-        "Supabase",
-        "TailwindCSS"
+        "PostgreSQL",
+        "React",
+        "Drizzle"
       ],
       "links": {},
       "featured": false,
       "date": "2026-03",
-      "status": "wip"
+      "status": "active"
     },
     {
       "id": "writing-agent",
@@ -207,6 +207,26 @@
       "featured": false,
       "date": "2026-07",
       "status": "wip"
+    },
+    {
+      "id": "tradar",
+      "name": "TRadar - 技术趋势与商业机会雷达",
+      "name_en": "TRadar - Tech Trend & Opportunity Radar",
+      "description": "从多个来源发现项目、按增长排序，并把证据、分析、个人研究和每日简报保存在可追溯的本地工作区",
+      "description_en": "Discovers projects from multiple sources, ranks them by growth, and keeps evidence, analysis, research notes and daily briefs in a traceable local workspace",
+      "longDescription": "TRadar 是个人技术趋势与商业机会雷达：从 GitHub、Hacker News 和 Product Hunt 发现项目并按小时观测，按增长信号排序，再为每个项目沉淀证据、四问/六维分析、个人研究笔记和实践验证记录，每天生成简报。首版是单用户 Go + SQLite 服务，同一进程提供 React 页面，默认只监听回环地址；模型分析默认关闭，开启后只接收显式选择的公开证据并带每日 token 预算。六个模块的 58 项验收均有证据映射。",
+      "tags": [
+        "Go",
+        "React",
+        "TypeScript",
+        "SQLite"
+      ],
+      "links": {
+        "github": "https://github.com/GGGxie/TRadar"
+      },
+      "featured": false,
+      "date": "2026-10",
+      "status": "active"
     }
   ]
 }

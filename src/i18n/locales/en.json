@@ -1,7 +1,12 @@
 {
   "nav": {
     "work": "Home",
-    "about": "About"
+    "about": "About",
+    "lab": "Status"
+  },
+  "meta": {
+    "homeTitle": "GGGxie - Full-Stack Engineer Portfolio",
+    "aboutTitle": "About - GGGxie"
   },
   "home": {
     "projects": "Projects",
@@ -19,7 +24,21 @@
   },
   "projectCard": {
     "viewDemo": "Demo",
-    "viewCode": "Code"
+    "viewCode": "Code",
+    "viewDetail": "View details",
+    "wip": "WIP",
+    "archived": "Archived",
+    "paused": "Paused"
+  },
+  "detail": {
+    "back": "Back to projects",
+    "about": "About this project",
+    "stack": "Tech stack",
+    "demo": "Live demo",
+    "source": "View source",
+    "notFound": "Project not found",
+    "prev": "Previous",
+    "next": "Next"
   },
   "footer": {
     "copyright": "All rights reserved"

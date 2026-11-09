@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ThemeToggle } from './ThemeToggle';
+import { useLabAccess } from '../hooks/useLabAccess';
 import './Header.css';
 
 export function Header() {
@@ -10,10 +11,12 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { t, i18n } = useTranslation();
+  const showLab = useLabAccess();
 
   const navLinks = [
     { path: '/', label: t('nav.work') },
     { path: '/about', label: t('nav.about') },
+    ...(showLab ? [{ path: '/lab', label: t('nav.lab') }] : []),
   ];
 
   useEffect(() => {

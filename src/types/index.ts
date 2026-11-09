@@ -19,7 +19,7 @@ export interface Project {
   links: ProjectLinks;
   featured: boolean;
   date: string;
-  status?: 'active' | 'archived' | 'wip';
+  status?: 'active' | 'archived' | 'paused' | 'wip';
 }
 
 // 社交链接类型
@@ -47,4 +47,90 @@ export interface Profile {
 export interface Config {
   profile: Profile;
   projects: Project[];
+}
+
+// 以下为自用视图（/lab）的数据，来自 scripts/probe-services.mjs 与手写的 private.json
+export interface ServiceProbe {
+  ok: boolean;
+  status: number;
+  ms: number;
+  error?: string;
+}
+
+export interface ServiceHealth {
+  hostname: string;
+  target: string;
+  public: ServiceProbe;
+  local: ServiceProbe;
+}
+
+export interface HealthReport {
+  checkedAt: string;
+  services: ServiceHealth[];
+}
+
+export interface ServiceNote {
+  project: string;
+  path?: string;
+  runtime?: string;
+  repo?: string;
+  note?: string;
+}
+
+export type ProjectClassification = 'matched' | 'local-only' | 'github-only' | 'unclassified';
+
+export interface ProjectInventoryItem {
+  id: string;
+  name: string;
+  directoryName: string;
+  path: string;
+  classification: ProjectClassification;
+  lifecycle: string;
+  stacks: string[];
+  git: {
+    isRepository: boolean;
+    branch?: string;
+    clean?: boolean;
+    lastCommitAt?: string;
+  };
+  github?: {
+    fullName: string;
+    url: string;
+    private?: boolean;
+  };
+  works: {
+    public: boolean;
+    demoUrl?: string;
+  };
+}
+
+export interface InventorySummary {
+  generatedAt: string;
+  total: number;
+  githubMatched: number;
+  public: number;
+  unclassified: number;
+  ignored?: { name: string; reason: string }[];
+}
+
+export interface PortfolioConfig {
+  feishuUrl?: string;
+  githubProjectUrl?: string;
+  githubIssueUrl?: string;
+  syncedAt?: string;
+}
+
+export interface PrivateConfig {
+  notes?: Record<string, ServiceNote>;
+  offline?: { project: string; path?: string; note?: string }[];
+  ops?: { name: string; value: string }[];
+  inventory?: InventorySummary;
+  projects?: ProjectInventoryItem[];
+  portfolio?: PortfolioConfig;
+}
+
+declare global {
+  interface Window {
+    __CONFIG__?: Config;
+  }
 }

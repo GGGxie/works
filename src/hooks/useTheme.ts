@@ -4,6 +4,8 @@ type Theme = 'light' | 'dark';
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
+    // 预渲染时没有浏览器环境，按浅色出静态 HTML
+    if (typeof window === 'undefined') return 'light';
     // 检查本地存储
     const saved = localStorage.getItem('theme') as Theme;
     if (saved) return saved;

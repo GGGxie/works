@@ -5,7 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run build:client && npm run build:ssr && npm run prerender && npm run probe",
+    "build:client": "tsc -b && vite build",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "prerender": "node scripts/prerender.mjs",
+    "probe": "node scripts/probe-services.mjs",
+    "og": "node scripts/make-og.mjs",
+    "inventory": "node scripts/inventory-projects.mjs",
+    "inventory:check": "node scripts/inventory-projects.mjs --check",
+    "test": "node --test tests/*.test.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

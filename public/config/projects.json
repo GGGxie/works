@@ -14,44 +14,21 @@
   },
   "projects": [
     {
-      "id": "crazya",
-      "name": "CrazyA - AI + 玄学股票预测系统",
-      "name_en": "CrazyA - AI + Mystical Stock Prediction",
-      "description": "科技与玄学的完美结合：用 AI Agent 和奇门遁甲为投资决策提供独特视角",
-      "description_en": "Where tech meets mysticism: AI Agent + ancient Qimen Dunjia divination for unique investment insights",
-      "longDescription": "CrazyA 独创性地将现代 AI 技术（LangGraph ReACT Agent）、实时股票数据（财联社、东方财富、新浪财经）和传统玄学算法（奇门遁甲五行分析）三者深度融合。支持日度市场预测、个股决策分析和风险预警，为投资者提供多维度的参考建议。",
-      "tags": ["Python", "React", "LangGraph", "Go", "FastAPI", "MCP"],
-      "links": {
-        "github": "https://github.com/GGGxie/CrazyA",
-        "demo": "https://crazya.gggxie.com"
-      },
-      "featured": true,
-      "date": "2025-10",
-      "status": "active"
-    },
-    {
-      "id": "qiongtrip",
-      "name": "QiongTrip - 海南智能旅游AI助手",
-      "name_en": "QiongTrip - Hainan AI Travel Assistant",
-      "description": "基于 AI 的海南旅游服务平台，提供智能行程规划、政策查询、实时咨询和网红地点避坑分析",
-      "description_en": "AI-powered Hainan travel platform with smart itinerary planning, policy lookup, and viral spot reviews",
-      "longDescription": "QiongTrip 是为三亚/海口游客打造的智能旅游助手。集成 LangGraph AI Agent 实现多轮对话和智能行程规划，支持免税政策查询、景点预约信息、网红景点真实评价分析等功能。采用 Go + Python 微服务架构，前端使用 React + TailwindCSS 构建现代化界面。",
-      "tags": ["React", "Go", "Python", "LangGraph", "FastAPI", "TailwindCSS"],
-      "links": {
-        "github": "https://github.com/GGGxie/QiongTrip"
-      },
-      "featured": false,
-      "date": "2025-12",
-      "status": "active"
-    },
-    {
       "id": "mcpark",
       "name": "MCPark - MCP 服务收集管理平台",
       "name_en": "MCPark - MCP Service Management Platform",
       "description": "收集、管理和分享 MCP 服务配置，一键生成 Cursor IDE deep link 方便安装",
       "description_en": "Collect, manage and share MCP service configs, generate Cursor IDE deep links for one-click install",
       "longDescription": "MCPark 是一个 B/S 架构的 Web 应用，用于收集、管理和分享 Model Context Protocol (MCP) 服务配置。用户可以添加自己开发的或收集到的 MCP 服务，系统会自动生成 Cursor IDE 的 deep link，方便其他用户一键安装。支持 SQLite 和 MySQL 双数据库。",
-      "tags": ["Go", "React", "TypeScript", "Vite", "TailwindCSS", "SQLite"],
+      "tags": [
+        "Go",
+        "React",
+        "TypeScript",
+        "Vite",
+        "TailwindCSS",
+        "SQLite"
+      ],
+      "image": "/images/projects/mcpark.png",
       "links": {
         "github": "https://github.com/GGGxie/MCPark",
         "demo": "https://mcpark.gggxie.com"
@@ -61,19 +38,194 @@
       "status": "active"
     },
     {
+      "id": "crazya",
+      "name": "CrazyA - AI + 玄学股票预测系统",
+      "name_en": "CrazyA - AI + Mystical Stock Prediction",
+      "description": "科技与玄学的完美结合：用 AI Agent 和奇门遁甲为投资决策提供独特视角",
+      "description_en": "Where tech meets mysticism: AI Agent + ancient Qimen Dunjia divination for unique investment insights",
+      "longDescription": "CrazyA 独创性地将现代 AI 技术（LangGraph ReACT Agent）、实时股票数据（财联社、东方财富、新浪财经）和传统玄学算法（奇门遁甲五行分析）三者深度融合。支持日度市场预测、个股决策分析和风险预警，为投资者提供多维度的参考建议。",
+      "tags": [
+        "Python",
+        "React",
+        "LangGraph",
+        "Go",
+        "FastAPI",
+        "MCP"
+      ],
+      "image": "/images/projects/crazya.png",
+      "links": {},
+      "featured": false,
+      "date": "2025-10",
+      "status": "archived"
+    },
+    {
       "id": "skillshub",
       "name": "SkillsHub - AI Skills 社区平台",
       "name_en": "SkillsHub - AI Skills Community Platform",
       "description": "社区驱动的 AI Skills 仓库，发现、创建、学习和分享 Cursor Skills",
       "description_en": "Community-driven AI skills repository for discovering, creating, learning and sharing Cursor Skills",
       "longDescription": "SkillsHub 是一个社区驱动的 AI Skills 仓库平台，支持发现、创建、学习和分享 Cursor Agent Skills。采用 Go + React 全栈架构，支持中英双语、Google OAuth 登录、Markdown 渲染、评论点赞系统和技能搜索排序等功能。",
-      "tags": ["Go", "React", "TypeScript", "Vite", "TailwindCSS", "SQLite", "OAuth"],
+      "tags": [
+        "Go",
+        "React",
+        "TypeScript",
+        "Vite",
+        "TailwindCSS",
+        "SQLite",
+        "OAuth"
+      ],
+      "image": "/images/projects/skillshub.png",
       "links": {
         "github": "https://github.com/GGGxie/SkillsHub",
         "demo": "https://skills.gggxie.com"
       },
       "featured": false,
       "date": "2026-02",
+      "status": "active"
+    },
+    {
+      "id": "codeflow",
+      "name": "CodeFlow - 数字研发团队 Agent 系统",
+      "name_en": "CodeFlow - Digital Dev Team Agent System",
+      "description": "在 Cursor IDE 中一句话描述想法，由 11 个专业 Agent 全自动完成从需求到部署的完整研发流程",
+      "description_en": "Describe an idea in one sentence in Cursor IDE, 11 specialized agents auto-complete the full dev cycle from requirements to deployment",
+      "longDescription": "CodeFlow 是一套部署在 Cursor IDE 中的数字研发团队 Agent 系统，由工程经理统一调度 11 个专业角色 Agent（产品经理、UX 设计师、前后端架构师、开发、QA、安全审计、DevOps、运营分析）。用户只需一句话产品想法，系统自动多阶段并行完成需求分析 → 架构设计 → 代码实现 → 测试 → 安全审计 → 部署配置，全程维护项目状态支持中断续传。",
+      "tags": [
+        "Cursor",
+        "AI Agent",
+        "Shell",
+        "MCP"
+      ],
+      "links": {
+        "github": "https://github.com/GGGxie/CodeFlow"
+      },
+      "featured": false,
+      "date": "2026-03",
+      "status": "active"
+    },
+    {
+      "id": "reditcn",
+      "name": "ReditCN - 中文内容聚合社区",
+      "name_en": "ReditCN - Chinese Content Community",
+      "description": "面向中文用户的 Reddit 式社区，支持子版块、投票排序与嵌套评论讨论",
+      "description_en": "A Reddit-style community for Chinese users with sub-forums, vote-based ranking and threaded discussions",
+      "longDescription": "ReditCN 是一个以兴趣为导向、由社区自治的中文内容聚合平台。用户可以创建或加入子版块、发帖、投票和参与嵌套评论，内容曝光由社区投票决定而非算法推荐。后端采用 FastAPI + SQLAlchemy 异步栈，搭配 PostgreSQL 与 Redis；前端为 React + TypeScript + TailwindCSS，使用 React Query 和 Zustand 管理数据与状态，整体通过 Docker Compose 编排部署。",
+      "tags": [
+        "React",
+        "TypeScript",
+        "FastAPI",
+        "PostgreSQL",
+        "Redis",
+        "TailwindCSS"
+      ],
+      "image": "/images/projects/reditcn.png",
+      "links": {},
+      "featured": false,
+      "date": "2026-03",
+      "status": "archived"
+    },
+    {
+      "id": "voyago",
+      "name": "Voyago - 一体化营销自动化平台",
+      "name_en": "Voyago - All-in-One Marketing Automation",
+      "description": "联系人、邮件活动、自动化工作流、Webhook、社交发布与分析共用一份联系人档案的自用营销平台",
+      "description_en": "A self-hosted marketing platform where contacts, email campaigns, workflows, webhooks, social publishing and analytics share one contact profile",
+      "longDescription": "Voyago 是自用的一体化营销自动化平台，所有模块共享同一份联系人档案和事件流：联系人支持 CSV 导入、标签与动态分组；邮件有块编辑器、定时分批发送、打开点击追踪和一键退订；可视化工作流支持触发、等待、条件与 Webhook 节点；另有签名出站 Webhook、公众号与 X 发布、AI 文案和活动报表。技术上采用 Next.js + PostgreSQL（Drizzle），后台任务由 pg-boss 驱动，账号体系支持邀请成员与两步验证，经 Docker Compose 部署在本机，不开放注册。",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "PostgreSQL",
+        "React",
+        "Drizzle"
+      ],
+      "links": {},
+      "featured": false,
+      "date": "2026-03",
+      "status": "active"
+    },
+    {
+      "id": "writing-agent",
+      "name": "Writing Agent - 中文图文写作智能体",
+      "name_en": "Writing Agent - Chinese Content Writing Agent",
+      "description": "以来源分级和证据闸门驱动的中文科技内容工作台，支持研究、双平台成稿与自动质检",
+      "description_en": "An evidence-gated Chinese tech editorial workspace for research, dual-platform drafting, and automated quality checks",
+      "longDescription": "Writing Agent 面向科技与 AI 内容生产，将 RSSHub、X 和人工素材汇入统一工作流，完成来源解析、A/B/C 分级、研究整理、选题评分与证据判断。证据不足时只保存研究材料；条件满足后由 LangGraph 编排公众号和小红书草稿、配图计划及机械质检，最终仍由人工确认发布。",
+      "tags": [
+        "Python",
+        "LangGraph",
+        "FastAPI",
+        "AI Agent",
+        "Content"
+      ],
+      "links": {
+        "demo": "https://writing.gggxie.com",
+        "github": "https://github.com/GGGxie/writing-agent"
+      },
+      "image": "/images/projects/writing-agent.png",
+      "featured": false,
+      "date": "2026-09",
+      "status": "active"
+    },
+    {
+      "id": "hap",
+      "name": "HAP - AI 数字员工托管平台",
+      "name_en": "HAP - AI Digital Employee Platform",
+      "description": "面向中小企业的 AI Agent 托管平台，开箱即用地部署会对话、能用工具、带知识库的数字员工",
+      "description_en": "An AI agent hosting platform for SMBs: deploy conversational, tool-using digital employees with RAG knowledge bases",
+      "longDescription": "HAP（Hermes Agent Platform）基于 Hermes Agent 框架构建，将 Agent 以 in-process 方式集成进 FastAPI 后端，配合 Celery 任务队列和独立的 RAG 摄入 Worker 实现企业知识库检索。数据层使用 PostgreSQL + pgvector 存储业务数据与向量，Redis 承担缓存与队列；前端为 React 19 + Vite 6；部署侧提供本地 Docker Compose、CI/Staging 编排和 Kubernetes 生产清单，并内置 Prometheus + Grafana + Loki 可观测性栈。",
+      "tags": [
+        "AI Agent",
+        "React",
+        "FastAPI",
+        "Celery",
+        "PostgreSQL",
+        "Kubernetes"
+      ],
+      "image": "/images/projects/hap.png",
+      "links": {
+        "demo": "https://gggxie.com"
+      },
+      "featured": true,
+      "date": "2026-06",
+      "status": "paused"
+    },
+    {
+      "id": "mingming-agent",
+      "name": "明明炒股助手 - 飞书 A 股选股 Agent",
+      "name_en": "MingMing Stock Assistant - Feishu A-Share Screener",
+      "description": "在飞书里用自然语言描述选股条件，Agent 调工具完成可复现的 A 股筛选与复盘",
+      "description_en": "Describe screening criteria in natural language on Feishu; the agent runs reproducible A-share screening and reviews",
+      "longDescription": "明明炒股助手把自然语言转换成明确的选股参数：Hermes Agent 负责理解意图、补齐歧义和解释结果，选股 MCP 负责拉取行情、计算技术指标并执行条件筛选与排序，行情数据来自 cn-market-data 公开源。用户通过飞书机器人私聊使用，可以保存常用策略、生成自选股日报和盘后复盘。设计上坚持数据优先与计算确定：结论必须来自工具调用，指标由程序计算，相同参数下结果可完整复现。",
+      "tags": [
+        "AI Agent",
+        "MCP",
+        "Feishu",
+        "Node.js",
+        "Fintech"
+      ],
+      "links": {},
+      "featured": false,
+      "date": "2026-07",
+      "status": "wip"
+    },
+    {
+      "id": "tradar",
+      "name": "TRadar - 技术趋势与商业机会雷达",
+      "name_en": "TRadar - Tech Trend & Opportunity Radar",
+      "description": "从多个来源发现项目、按增长排序，并把证据、分析、个人研究和每日简报保存在可追溯的本地工作区",
+      "description_en": "Discovers projects from multiple sources, ranks them by growth, and keeps evidence, analysis, research notes and daily briefs in a traceable local workspace",
+      "longDescription": "TRadar 是个人技术趋势与商业机会雷达：从 GitHub、Hacker News 和 Product Hunt 发现项目并按小时观测，按增长信号排序，再为每个项目沉淀证据、四问/六维分析、个人研究笔记和实践验证记录，每天生成简报。首版是单用户 Go + SQLite 服务，同一进程提供 React 页面，默认只监听回环地址；模型分析默认关闭，开启后只接收显式选择的公开证据并带每日 token 预算。六个模块的 58 项验收均有证据映射。",
+      "tags": [
+        "Go",
+        "React",
+        "TypeScript",
+        "SQLite"
+      ],
+      "links": {
+        "github": "https://github.com/GGGxie/TRadar"
+      },
+      "featured": false,
+      "date": "2026-10",
       "status": "active"
     }
   ]
